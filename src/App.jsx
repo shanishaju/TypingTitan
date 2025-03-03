@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { faker } from "@faker-js/faker"; // Import faker
+import useSound from "use-sound"; // Import sound hook
+import startSound from "./assets/sounds/start.mp3";
+import endSound from "./assets/sounds/end.mp3";
+import restartSound from "./assets/sounds/restart.mp3";
+
 import "./App.css"; 
 
 
@@ -22,7 +27,13 @@ function App() {
 
 
 
+  // Load sounds
+  const [playEnd] = useSound(endSound, { volume: 0.3 });
+  const [playStart] = useSound(startSound, { volume: 0.5 });
+  const [playRestart] = useSound(restartSound, { volume: 0.5 });
 
+
+  // generateRandomSentences
   const generateRandomSentences = () => {
     const sentences = [];
     for (let i = 0; i < 1; i++) {
@@ -59,6 +70,7 @@ function App() {
   }, [isRunning, timeLeft]);
 
   const handleStart = () => {
+    playStart(); // Play start sound
     generateRandomSentences();
     setIsRunning(true);
     setUserInput("");
@@ -71,6 +83,7 @@ function App() {
   };
 
   const handleReset = () => {
+    playRestart(); // Play restart sound
     setIsRunning(false);
     setUserInput("");
     setTimeLeft(gameDuration);
@@ -86,6 +99,7 @@ function App() {
   };
 
   const calculateResults = () => {
+    playEnd(); // Play end sound
 
     const wordsTyped = userInput.trim().split(/\s+/).length;
     const correctChars = userInput.split("").filter((char, index) => char === textToType[index]).length;
