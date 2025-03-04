@@ -21,7 +21,7 @@ npm install tailwindcss @tailwindcss/vite
 npm install react-router-dom
 ```
 
-### Faker.js (for generating random words)
+### Faker.js (for generating random sentences )
 [Official Docs](https://www.npmjs.com/package/@faker-js/faker)
 ```sh
 npm install @faker-js/faker
