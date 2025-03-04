@@ -14,7 +14,7 @@ function Home() {
             play();
         }
 
-        // Pause sound when the tab is inactive
+        //  sound inactive
         const handleVisibilityChange = () => {
             if (document.hidden) {
                 stop();
