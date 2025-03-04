@@ -6,7 +6,7 @@ import "../App.css";
 import gameloop from "../assets/sounds/game-loop.mp3";
 function Home() {
     const navigate = useNavigate();
-    const [isPlaying, setIsPlaying] = useState(false); // Initially OFF
+    const [isPlaying, setIsPlaying] = useState(false);
     const [play, { stop }] = useSound(gameloop, { volume: 0.5, loop: true });
 
     useEffect(() => {
@@ -31,6 +31,7 @@ function Home() {
         };
     }, [isPlaying, play, stop]);
 
+
     // Toggle Sound
     const toggleSound = () => {
         if (isPlaying) {
@@ -52,7 +53,6 @@ function Home() {
                 onClick={toggleSound}
             >
                 {isPlaying ? <Volume2 size={24} /> : <VolumeX size={24} />}
-                {/* VolumeX when OFF, Volume2 when ON */}
             </button>
 
             <h1 className="absolute top-[50px] left-1/2 -translate-x-1/2 text-3xl md:text-3xl font-bold text-white drop-shadow-lg animate-pulse">
