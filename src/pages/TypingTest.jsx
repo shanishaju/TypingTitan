@@ -108,14 +108,13 @@ function TypingTest() {
 
         const calculatedWpm = Math.round((wordsTyped / gameDuration) * 60);
         const calculatedAccuracy = totalCharsTyped > 0 ? Math.round((correctChars / totalCharsTyped) * 100) : 0;
-        const calculatedPoints = Number(calculatedWpm * (calculatedAccuracy / 100)).toFixed(1);
+        const calculatedPoints = Number((calculatedWpm * (calculatedAccuracy / 100)).toFixed(1));
 
         setWpm(calculatedWpm);
         setAccuracy(calculatedAccuracy);
         setPoints(calculatedPoints);
          
-        
-
+         
         if (calculatedPoints > highScore) {
             localStorage.setItem("highScore", calculatedPoints);
             setHighScore(calculatedPoints);
