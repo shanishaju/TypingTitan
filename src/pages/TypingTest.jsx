@@ -123,7 +123,7 @@ function TypingTest() {
                 {/* Main section*/}
                 <div className=" w-full md:w-2/3 max-w-2xl bg-orange-300 border-5 border-orange-500 rounded-lg shadow-lg p-6">
                     <h1 className="text-white text-3xl md:text-4xl font-bold text-center">
-                        Typing Speed Test
+                        Type fast, break records
                     </h1>
                     <div className="col-span-3 flex flex-col items-center">
                         <div className="w-full md:w-2/3 bg-gray-200 h-2 rounded-md mt-5">
