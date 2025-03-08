@@ -58,7 +58,7 @@ function TypingTest() {
         let timer;
         if (isRunning && timeLeft > 0) {
             timer = setInterval(() => {
-                setTimeLeft((prev) => prev - 1);
+                setTimeLeft((prev) => prev - 1);      
             }, 1000);
         } else if (timeLeft === 0) {
             calculateResults();
@@ -102,11 +102,11 @@ function TypingTest() {
     const calculateResults = () => {
         playEnd()
 
-        const wordsTyped = userInput.trim().split(/\s+/).length;
+        const wordsTyped = userInput.trim().split(/\s+/).length; 
         const correctChars = userInput.split("").filter((char, index) => char === textToType[index]).length;
         const totalCharsTyped = userInput.length;
 
-        const calculatedWpm = Math.round((wordsTyped / gameDuration) * 60);
+        const calculatedWpm = Math.round((wordsTyped / gameDuration) * 60); 
         const calculatedAccuracy = totalCharsTyped > 0 ? Math.round((correctChars / totalCharsTyped) * 100) : 0;
         const calculatedPoints = Number((calculatedWpm * (calculatedAccuracy / 100)).toFixed(1));
 
@@ -166,7 +166,7 @@ function TypingTest() {
                                 onClick={isRunning ? handleReset : handleStart}
 
                             >
-                                {isRunning ? "Reset" : `Start${timeLeft === 0 ? " Again" : ""}`}
+                                {isRunning ? "Reset" : "Start"}
                             </button>
 
                         </div>
