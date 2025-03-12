@@ -58,7 +58,7 @@ function TypingTest() {
         let timer;
         if (isRunning && timeLeft > 0) {
             timer = setInterval(() => {
-                setTimeLeft((prev) => prev - 1);      
+                setTimeLeft((prev) => prev - 1);
             }, 1000);
         } else if (timeLeft === 0) {
             calculateResults();
@@ -102,19 +102,21 @@ function TypingTest() {
     const calculateResults = () => {
         playEnd()
 
-        const wordsTyped = userInput.trim().split(/\s+/).length; 
-        const correctChars = userInput.split("").filter((char, index) => char === textToType[index]).length;
-        const totalCharsTyped = userInput.length;
 
-        const calculatedWpm = Math.round((wordsTyped / gameDuration) * 60); 
-        const calculatedAccuracy = totalCharsTyped > 0 ? Math.round((correctChars / totalCharsTyped) * 100) : 0;
+        const typedWords = userInput.split(/\s+/)
+        const expectedWords = textToType.split(/\s+/)
+        const correctWordsCount = typedWords.filter((typedWord, index) => typedWord === expectedWords[index]).length;
+        const userWordCount  = typedWords.length;
+
+        const calculatedWpm = Math.round((userWordCount  / gameDuration) * 60);
+        const calculatedAccuracy = userWordCount  > 0 ? Math.round((correctWordsCount / userWordCount ) * 100) : 0;
         const calculatedPoints = Number((calculatedWpm * (calculatedAccuracy / 100)).toFixed(1));
 
         setWpm(calculatedWpm);
         setAccuracy(calculatedAccuracy);
         setPoints(calculatedPoints);
-         
-         
+
+
         if (calculatedPoints > highScore) {
             localStorage.setItem("highScore", calculatedPoints);
             setHighScore(calculatedPoints);
@@ -186,9 +188,9 @@ function TypingTest() {
                     {/* Users score */}
                     {timeLeft === 0 && (
                         <div className="mt-4 text-center">
-                            <div className="text-blue-500 text-2xl font-bold ">WPM:{wpm}</div>
-                            <div className="text-lg font-semibold">Accuracy:{accuracy}%</div>
-                            <p className="text-gray-600 text-lg">Your Score:  {points}</p>
+                            <div className="text-gray-600 text-lg">WPM:{wpm}</div>
+                            <div className="text-gray-600 text-lg">Accuracy:{accuracy}%</div>
+                            <p className= "text-blue-500 text-2xl font-bold ">Your Score:  {points}</p>
                         </div>
                     )}
                     {showCongrats && (
